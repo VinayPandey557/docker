@@ -5,7 +5,7 @@ import express from "express";
 const app = express();
 app.use(express.json());
 
-const client = new PrismaClient();
+const prisma = new PrismaClient();
 
 app.get("/", (req, res) => {
     res.json({
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 })
 
 app.post("/", async (req, res) => {
-    await client.user.create({
+    await prisma.user.create({
         data: {
             email: req.body.email,
             name: req.body.name
